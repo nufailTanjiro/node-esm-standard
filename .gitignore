@@ -1,0 +1,19 @@
+node_modules
+dist
+
+package-lock.json
+
+
+# TypeScript build output
+/dist
+
+# OS generated files
+.DS_Store
+
+# Test coverage
+/coverage
+
+# Environment variables
+.env
+.env.*
+!.env.example
