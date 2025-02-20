@@ -1,18 +1,25 @@
-import express, { Request, Response } from "express";
+import { sum } from "#utils/sum.js";
+import express from "express";
 
+const port = process.env.PORT ?? 3000;
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello from Express with ESM & TypeScript!");
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-app.get("/sum", (req: Request, res: Response) => {
-  const { a, b } = req.query;
-  const sum = Number(a) + Number(b);
-  res.send(`The sum of ${a} and ${b} is ${sum}`);
+app.get("/sum", (req, res) => {
+  const a = Number(req.query.a);
+  const b = Number(req.query.b);
+  const result = sum(a, b);
+  res.send(`Sum of ${String(a)} and ${String(b)} is ${String(result)}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${String(port)}`);
+});
+
+process.on("SIGTERM", () => {
+  console.log(`Process ${String(process.pid)} received SIGTERM`);
+  process.exit(0);
 });

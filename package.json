@@ -18,7 +18,6 @@
     "coverage": "vitest run --coverage",
     "prepare": "husky"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -44,7 +43,6 @@
     "typescript-eslint": "^8.24.1",
     "vitest": "^3.0.6"
   },
-
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint",
